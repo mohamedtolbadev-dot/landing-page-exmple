@@ -73,6 +73,56 @@ body{margin:0;background:#fff;color:var(--ink);font-family:"Droid Arabic Kufi","
 @media (max-width:768px){.slides>div{flex:1 1 calc(50% - 10px);min-width:150px}}
 @media (max-width:480px){.slides>div{flex:1 1 100%;max-width:350px}}
 
+/* Center content on desktop like a phone display - only apply to screens larger than 480px */
+@media (min-width: 481px) {
+  body {
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    min-height: 100vh;
+  }
+  main {
+    width: 430px;
+    min-height: 100vh;
+    background: #fff;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    position: relative;
+    overflow-x: hidden;
+  }
+  #sticky {
+    width: 430px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+  }
+}
+
+/* Reset for mobile screens (480px and smaller) - use original responsive design */
+@media (max-width: 480px) {
+  body {
+    background: #fff;
+    display: block;
+    margin: 0;
+    min-height: 100vh;
+  }
+  main {
+    width: 100%;
+    min-height: 100vh;
+    background: #fff;
+    box-shadow: none;
+    position: relative;
+    overflow-x: hidden;
+  }
+  #sticky {
+    width: calc(100% - 40px);
+    left: auto;
+    transform: none;
+    bottom: 20px;
+    margin: 0 20px;
+  }
+}
+
 /* Form field enhancements */
 .field{width:100%;height:54px;background:#fff;border:1.5px solid rgba(21,22,26,.22);color:var(--ink);font:inherit;font-size:16px;padding:0 18px;border-radius:16px;appearance:none;transition:all 0.3s cubic-bezier(.2,.7,.2,1);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
 .field::placeholder{color:rgba(21,22,26,.4)}
@@ -145,6 +195,26 @@ details[open] p{animation:up .3s both}
 .btn:disabled{opacity:.7;cursor:wait}
 .field.ok{border-color:var(--tealtx)}
 
+/* عرض المحتوى في وسط الشاشة على الكمبيوتر وكأنه هاتف */
+body {
+  background: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+}
+main {
+  width: 430px;
+  min-height: 100vh;
+  background: #fff;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  position: relative;
+}
+#sticky {
+  width: 430px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 /* تحسينات للشاشات الكبيرة */
 @media (min-width: 768px) {
   #hero {
