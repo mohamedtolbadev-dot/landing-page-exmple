@@ -4,12 +4,12 @@ const CONFIG={
   sizes:[40,41,42,43,44,45],
   maxQty:5,
   images:{
-    hero:{src:"assets/images/nike-pegasus-41-m-chaussures-homme-717204-1-sz.png"},
-    detail1:{src:"assets/images/aaaa_59c76089-d41a-4bd1-a248-3bcc416f2a86.png",x:50,y:50,s:1.0},
+    hero:{src:"assets/images/shoe-1-back-HD.png"},
+    detail1:{src:"assets/images/shoe-2-angle-HD.png",x:50,y:50,s:1.0},
     gallery:[
-      {src:"assets/images/nike-pegasus-41-m-chaussures-homme-717204-1-sz.png",x:50,y:50,s:1.0},
-      {src:"assets/images/images.png",x:50,y:50,s:1.0},
-      {src:"assets/images/aaaa_59c76089-d41a-4bd1-a248-3bcc416f2a86.png",x:50,y:50,s:1.0}
+      {src:"assets/images/shoe-3-side-HD.png",x:50,y:50,s:1.0},
+      {src:"assets/images/shoe-4-sole-HD.png",x:50,y:50,s:1.0},
+      {src:"assets/images/shoe-2-angle-HD.png",x:50,y:50,s:1.0}
     ]
   },
   faq:[
@@ -69,7 +69,7 @@ $$('[data-sizes]').forEach(e=>e.textContent=CONFIG.sizes[0]+'–'+CONFIG.sizes.a
         // gallery - عرض الصور الثلاث جنباً إلى جنب مع خاصية الـ modal عند التحويم
         const sl=$('#slides'),n=CONFIG.images.gallery.length;
         
-        // إنشاء عنصر الـ modal مع تأثير الضبابية
+        // إنشاء عنصر الـ modal مع تأثير الضبابية وتحسينات الحركة
         const modal = document.createElement('div');
         modal.style.cssText = `
             position:fixed;
@@ -92,9 +92,30 @@ $$('[data-sizes]').forEach(e=>e.textContent=CONFIG.sizes[0]+'–'+CONFIG.sizes.a
             object-fit:contain;
             border-radius:16px;
             box-shadow:0 20px 60px rgba(0,0,0,0.5);
+            transform:scale(0.9);
+            transition:transform 0.4s cubic-bezier(.2,.7,.2,1), opacity 0.4s cubic-bezier(.2,.7,.2,1);
+            opacity:0;
         `;
         modal.appendChild(modalImg);
         document.body.appendChild(modal);
+        
+        // تحديث دوال فتح وإغلاق الـ modal لتشمل تحريك الصورة
+        const openModal = (src) => {
+            modalImg.src = src;
+            modal.style.display='flex';
+            setTimeout(() => {
+                modal.style.opacity='1';
+                modalImg.style.opacity='1';
+                modalImg.style.transform='scale(1)';
+            }, 10);
+        };
+        
+        const closeModal = () => {
+            modal.style.opacity='0';
+            modalImg.style.opacity='0';
+            modalImg.style.transform='scale(0.9)';
+            setTimeout(() => modal.style.display='none', 400);
+        };
         
         // إغلاق الـ modal عند النقر خارج الصورة
         modal.addEventListener('click', (e) => {
@@ -114,21 +135,48 @@ $$('[data-sizes]').forEach(e=>e.textContent=CONFIG.sizes[0]+'–'+CONFIG.sizes.a
             sl.appendChild(d);
             fill(d,o,"صورة "+(i+1));
             
-            // فتح الـ modal عند المرور بالماوس أو النقر
-            const openModal = () => {
-                modalImg.src = o.src;
+            // إضافة أيقونة التكبير على الصورة
+            const zoomIcon = document.createElement('div');
+            zoomIcon.style.cssText = `
+                position:absolute;
+                top:10px;
+                left:10px;
+                background:rgba(0,0,0,0.5);
+                color:white;
+                width:36px;
+                height:36px;
+                border-radius:50%;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                opacity:0;
+                transition:opacity 0.3s ease;
+                z-index:10;
+            `;
+            zoomIcon.innerHTML = `<svg style="width:20px;height:20px"><use href="#i-zoom"/></svg>`;
+            d.appendChild(zoomIcon);
+            
+            // إظهار أيقونة التكبير عند التحويم وفتح الـ modal
+            const openModal = (src) => {
+                modalImg.src = src;
                 modal.style.display='flex';
                 setTimeout(() => modal.style.opacity='1', 10);
             };
             
             const closeModal = () => {
+                zoomIcon.style.opacity = '0';
                 modal.style.opacity='0';
                 setTimeout(() => modal.style.display='none', 400);
             };
             
-            d.addEventListener('mouseenter', openModal);
+            d.addEventListener('mouseenter', () => {
+                zoomIcon.style.opacity = '1';
+                openModal(o.src);
+            });
             d.addEventListener('mouseleave', closeModal);
-            d.addEventListener('click', openModal);
+            d.addEventListener('click', () => openModal(o.src));
+            d.style.position = 'relative';
+            d.style.overflow = 'hidden';
         });
         
         $('#gi').style.display='none';$('#gn').style.display='none';$('#prev').style.display='none';$('#next').style.display='none';$('#bar').style.display='none';
