@@ -1,4 +1,4 @@
-:root{--ink:#15161A;--teal:#0FB5B0;--tealtx:#067F83;--soft:#F5F5F5;--line:rgba(21,22,26,.14)}
+:root{--ink:#15161A;--teal:#C6F432;--tealtx:#506E00;--soft:#F5F5F5;--line:rgba(21,22,26,.14)}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:#fff;color:var(--ink);font-family:"Droid Arabic Kufi","Noto Kufi Arabic","Josefin Sans",sans-serif;font-size:15px;line-height:1.85;overflow-x:hidden}
 .lat{font-family:"Josefin Sans","Noto Kufi Arabic",sans-serif;letter-spacing:.2em;text-transform:uppercase}
@@ -70,3 +70,8 @@ details[open] p{animation:up .3s both}
 .offer-section{background:var(--teal)}
 @media (hover:hover){.btn:hover{transform:translateY(-2px)}.feature-card{transition:transform .25s}.feature-card:hover{transform:translateY(-4px)}}
 @media (min-width:768px){.hero-container{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 5%}.features-grid{grid-template-columns:repeat(3,1fr)}#order>div,.steps-container{max-width:640px;margin-inline:auto}}
+
+/* v3 primary: open lime */
+.mark{text-decoration:none;box-shadow:inset 0 -.4em 0 var(--teal)}
+:focus-visible{outline-color:var(--ink)}
+#prog,#bar{background:var(--ink)!important}
