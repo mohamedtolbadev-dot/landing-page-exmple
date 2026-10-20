@@ -43,11 +43,71 @@ fill($('[data-img=hero]'),CONFIG.images.hero,"حذاء رياضي رجالي");
 fill($('[data-img=detail1]'),CONFIG.images.detail1,"تفصيل الحذاء");
 $$('[data-price]').forEach(e=>e.textContent=CONFIG.price);
 $$('[data-sizes]').forEach(e=>e.textContent=CONFIG.sizes[0]+'–'+CONFIG.sizes.at(-1));
-// gallery - عرض الصور الثلاث جنباً إلى جنب
-const sl=$('#slides'),n=CONFIG.images.gallery.length;
-CONFIG.images.gallery.forEach((o,i)=>{const d=document.createElement('div');d.className='media';d.style.aspectRatio='1/1';d.style.flex='1 1 calc(33.33% - 10px)';sl.appendChild(d);fill(d,o,"صورة "+(i+1))});
-$('#gi').style.display='none';$('#gn').style.display='none';$('#prev').style.display='none';$('#next').style.display='none';$('#bar').style.display='none';
-sl.style.overflowX='visible';sl.style.flexWrap='wrap';sl.style.gap='15px';
+// gallery - عرض الصور الثلاث جنباً إلى جنب مع خاصية الـ modal عند التحويم
+        const sl=$('#slides'),n=CONFIG.images.gallery.length;
+        
+        // إنشاء عنصر الـ modal
+        const modal = document.createElement('div');
+        modal.style.cssText = `
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.9);
+            z-index:100;
+            display:none;
+            align-items:center;
+            justify-content:center;
+            opacity:0;
+            transition:opacity 0.4s cubic-bezier(.2,.7,.2,1);
+            padding:20px;
+        `;
+        const modalImg = document.createElement('img');
+        modalImg.style.cssText = `
+            max-width:90%;
+            max-height:90%;
+            object-fit:contain;
+            border-radius:16px;
+            box-shadow:0 20px 60px rgba(0,0,0,0.5);
+        `;
+        modal.appendChild(modalImg);
+        document.body.appendChild(modal);
+        
+        // إغلاق الـ modal عند النقر خارج الصورة
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal) {
+                modal.style.opacity='0';
+                setTimeout(() => modal.style.display='none', 400);
+            }
+        });
+        
+        // إنشاء بطاقات الصور وإضافة أحداث التحويم والنقر
+        CONFIG.images.gallery.forEach((o,i)=>{
+            const d=document.createElement('div');
+            d.className='media';
+            d.style.aspectRatio='1/1';
+            d.style.flex='1 1 calc(33.33% - 10px)';
+            d.style.cursor='pointer';
+            sl.appendChild(d);
+            fill(d,o,"صورة "+(i+1));
+            
+            // فتح الـ modal عند المرور بالماوس أو النقر
+            const openModal = () => {
+                modalImg.src = o.src;
+                modal.style.display='flex';
+                setTimeout(() => modal.style.opacity='1', 10);
+            };
+            
+            const closeModal = () => {
+                modal.style.opacity='0';
+                setTimeout(() => modal.style.display='none', 400);
+            };
+            
+            d.addEventListener('mouseenter', openModal);
+            d.addEventListener('mouseleave', closeModal);
+            d.addEventListener('click', openModal);
+        });
+        
+        $('#gi').style.display='none';$('#gn').style.display='none';$('#prev').style.display='none';$('#next').style.display='none';$('#bar').style.display='none';
+        sl.style.overflowX='visible';sl.style.flexWrap='wrap';sl.style.gap='15px';
 // faq
 $('#faq').innerHTML=CONFIG.faq.map(([q,a])=>`<details class="faq"><summary class="flex items-center justify-between gap-4 min-h-[58px] cursor-pointer font-bold">${q}<svg class="ico plus"><use href="#i-plus"/></svg></summary><p class="pb-4 text-sm" style="opacity:.75">${a}</p></details>`).join('');
 // form
