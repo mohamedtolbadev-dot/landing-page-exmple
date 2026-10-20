@@ -43,15 +43,40 @@ fill($('[data-img=hero]'),CONFIG.images.hero,"حذاء رياضي رجالي");
 fill($('[data-img=detail1]'),CONFIG.images.detail1,"تفصيل الحذاء");
 $$('[data-price]').forEach(e=>e.textContent=CONFIG.price);
 $$('[data-sizes]').forEach(e=>e.textContent=CONFIG.sizes[0]+'–'+CONFIG.sizes.at(-1));
-// gallery - عرض الصور الثلاث جنباً إلى جنب مع خاصية الـ modal عند التحويم
+// إضافة دعم التحريك عند التمرير للعناصر
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    // إذا كان العنصر هو قسم الخطوات، نقوم بتفعيل تحريكها
+                    if (entry.target.classList.contains('steps-container')) {
+                        entry.target.classList.add('in');
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // تطبيق المراقب على جميع العناصر التي تحتاج للتحريك عند التمرير
+        document.querySelectorAll('.steps-container, [data-r]').forEach(el => {
+            scrollObserver.observe(el);
+        });
+        
+        // gallery - عرض الصور الثلاث جنباً إلى جنب مع خاصية الـ modal عند التحويم
         const sl=$('#slides'),n=CONFIG.images.gallery.length;
         
-        // إنشاء عنصر الـ modal
+        // إنشاء عنصر الـ modal مع تأثير الضبابية
         const modal = document.createElement('div');
         modal.style.cssText = `
             position:fixed;
             inset:0;
-            background:rgba(0,0,0,0.9);
+            background:rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index:100;
             display:none;
             align-items:center;
