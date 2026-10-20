@@ -20,22 +20,22 @@
 <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
 </svg>
 
-<div id="prog" aria-hidden="true"></div>
 <main id="top">
 <!-- HERO -->
-<section id="hero" style="border-radius:0 0 48px 48px">
+<section id="hero" style="border-radius:0 0 48px 48px;background:linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);box-shadow:0 8px 40px rgba(0,0,0,0.08)">
   <header class="flex items-center justify-between px-5 h-16">
     <a href="#top" class="lat text-[17px] font-bold" style="letter-spacing:.34em" aria-label="PACE">Pace</a>
     <a href="#order" class="min-h-[40px] px-5 flex items-center rounded-full text-sm font-bold" style="background:var(--teal);color:var(--ink)" data-cta>اطلب</a>
   </header>
-  <div class="hero-container"><div class="hero-content px-5 pt-6 pb-7">
-    <p class="lat text-[11px] mb-3 hin" style="color:var(--tealtx)">Running · Homme</p>
-    <h1 class="font-extrabold hin" style="font-size:42px;line-height:1.22;--d:.1s">جري خفيف،<br><span class="mark">وستايل ثابت.</span></h1>
-    <p class="mt-4 text-[15px] max-w-[30ch] hin" style="opacity:.75;--d:.2s">حذاء رياضي رجالي بتصميم أنيق. تختار المقاس وتخلص عند الاستلام.</p>
-  </div>
-  <div class="hero-image px-3 pb-3">
-    <div class="relative hin" style="--d:.3s">
-      <div class="media" style="aspect-ratio:4/3.1;border-radius:30px" data-img="hero" data-alt="حذاء رياضي رجالي"></div>
+  <div class="hero-container">
+    <div class="hero-content px-5 pt-6 pb-7">
+      <p class="lat text-[11px] mb-3 hin" style="color:var(--teal)">Running · Homme</p>
+      <h1 class="font-extrabold hin" style="font-size:42px;line-height:1.22;--d:.1s">جري خفيف،<br><span class="mark">وستايل ثابت.</span></h1>
+      <p class="mt-4 text-[15px] max-w-[30ch] hin" style="opacity:.75;--d:.2s">حذاء رياضي رجالي بتصميم أنيق. تختار المقاس وتخلص عند الاستلام.</p>
+    </div>
+    <div class="hero-image px-3 pb-3">
+      <div class="relative hin" style="--d:.3s">
+        <div class="media" style="aspect-ratio:4/3.1;border-radius:30px" data-img="hero" data-alt="حذاء رياضي رجالي"></div>
       <svg class="arrows absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 400 310" aria-hidden="true">
         <path class="ln" pathLength="1" style="--d:1.1s" d="M78 36C110 30 160 50 190 104"/><path class="hd" style="--d:1.1s" d="M190 94L190 104L181 99"/>
         <path class="ln" pathLength="1" style="--d:1.4s" d="M320 52C332 68 332 84 318 98"/><path class="hd" style="--d:1.4s" d="M328 95L318 98L321 88"/>
@@ -44,12 +44,13 @@
       <span class="tag" style="--d:1s;left:3%;top:7%">أربطة</span>
       <span class="tag" style="--d:1.3s;left:68%;top:7%">الجزء العلوي</span>
       <span class="tag" style="--d:1.6s;left:3%;top:80%">نعل</span>
-      <div class="absolute bottom-4 flex items-baseline gap-1 rounded-full px-5 py-2" style="inset-inline-start:16px;background:#fff;color:var(--ink);border:1.5px solid var(--line)">
+      <div class="absolute bottom-4 flex items-baseline gap-1 rounded-full px-5 py-2" style="inset-inline-start:16px;background:#fff;color:var(--ink)">
         <span class="num font-bold text-[26px] leading-none"><span data-price>599</span></span><span class="num text-xs font-semibold">DH</span>
         <span class="text-[11px] ms-2" style="opacity:.6">ثمن تجريبي</span>
       </div>
     </div>
-  </div></div>
+  </div>
+  </div> <!-- نهاية hero-container -->
   <div class="px-5 pt-3 pb-8 hin" style="--d:.5s"><a href="#order" class="btn" id="heroCta" data-cta>اطلب الآن</a></div>
 </section>
 
@@ -68,9 +69,9 @@
   <h2 class="font-extrabold" style="font-size:30px;line-height:1.4">خطوط نظيفة،<br>حضور واضح.</h2>
   <div class="media mt-7" style="aspect-ratio:1/1" data-img="detail1" data-alt="تفصيل الحذاء"></div>
   <ul class="features-grid list-none m-0 p-0 mt-7">
-    <li class="feature-card flex gap-4"><svg class="ico" style="color:var(--tealtx)"><use href="#i-cash"/></svg><div><h3 class="font-bold">الدفع عند الاستلام</h3><p class="text-sm" style="opacity:.7">ما تخلص والو حتى توصلك.</p></div></li>
-    <li class="feature-card flex gap-4"><svg class="ico" style="color:var(--tealtx)"><use href="#i-phone"/></svg><div><h3 class="font-bold">تأكيد بالهاتف</h3><p class="text-sm" style="opacity:.7">نأكدو معاك المقاس والعنوان قبل الشحن.</p></div></li>
-    <li class="feature-card flex gap-4"><svg class="ico" style="color:var(--tealtx)"><use href="#i-size"/></svg><div><h3 class="font-bold">اختار مقاسك</h3><p class="text-sm" style="opacity:.7">المواصفات الدقيقة كتعمر حسب المنتوج الحقيقي.</p></div></li>
+    <li class="feature-card flex flex-col gap-4 py-4" style="border-top:none"><svg class="ico" style="color:var(--tealtx)"><use href="#i-cash"/></svg><div><h3 class="font-bold">الدفع عند الاستلام</h3><p class="text-sm" style="opacity:.7">ما تخلص والو حتى توصلك.</p></div></li>
+    <li class="feature-card flex flex-col gap-4 py-4" style="border-top:none"><svg class="ico" style="color:var(--tealtx)"><use href="#i-phone"/></svg><div><h3 class="font-bold">تأكيد بالهاتف</h3><p class="text-sm" style="opacity:.7">نأكدو معاك المقاس والعنوان قبل الشحن.</p></div></li>
+    <li class="feature-card flex flex-col gap-4 py-4" style="border-top:none;border-bottom:none"><svg class="ico" style="color:var(--tealtx)"><use href="#i-size"/></svg><div><h3 class="font-bold">اختار مقاسك</h3><p class="text-sm" style="opacity:.7">المواصفات الدقيقة كتعمر حسب المنتوج الحقيقي.</p></div></li>
   </ul>
 </section>
 
@@ -78,16 +79,16 @@
   <span>الدفع عند الاستلام<i></i>تأكيد بالهاتف<i></i>مقاسات 40–45<i></i>طلب فدقيقة<i></i></span><span>الدفع عند الاستلام<i></i>تأكيد بالهاتف<i></i>مقاسات 40–45<i></i>طلب فدقيقة<i></i></span><span>الدفع عند الاستلام<i></i>تأكيد بالهاتف<i></i>مقاسات 40–45<i></i>طلب فدقيقة<i></i></span><span>الدفع عند الاستلام<i></i>تأكيد بالهاتف<i></i>مقاسات 40–45<i></i>طلب فدقيقة<i></i></span>
 </div></div>
 <!-- GALLERY -->
-<section class="py-12" style="border-radius:36px;background:var(--soft)">
+<section class="py-12" style="border-radius:36px;background:var(--soft);box-shadow:0 8px 40px rgba(0,0,0,0.06)">
   <div class="px-5 flex items-end justify-between mb-5">
     <h2 class="font-extrabold text-2xl">من كل زاوية</h2>
     <p class="num text-sm" dir="ltr"><span id="gi">01</span> / <span id="gn">03</span></p>
   </div>
   <div class="slides" id="slides" tabindex="0" aria-label="معرض الصور"></div>
   <div class="px-5 mt-5 flex items-center gap-3" dir="ltr">
-    <div class="flex-1 h-[3px] rounded-full relative" style="background:rgba(21,22,26,.15)"><i id="bar" class="absolute top-0 left-0 h-full rounded-full" style="background:var(--teal);width:33%;transition:left .2s"></i></div>
-    <button id="prev" class="w-12 h-12 flex items-center justify-center rounded-full" style="border:1.5px solid var(--line)" aria-label="الصورة السابقة"><svg class="ico" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
-    <button id="next" class="w-12 h-12 flex items-center justify-center rounded-full" style="border:1.5px solid var(--line)" aria-label="الصورة التالية"><svg class="ico" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+    <div class="flex-1 h-[3px] rounded-full relative" style="background:rgba(21,22,26,.2)"><i id="bar" class="absolute top-0 left-0 h-full rounded-full" style="background:var(--teal);width:33%;transition:left .2s"></i></div>
+    <button id="prev" class="w-12 h-12 flex items-center justify-center rounded-full" style="border:1.5px solid var(--line);transition:all .3s" aria-label="الصورة السابقة"><svg class="ico" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+    <button id="next" class="w-12 h-12 flex items-center justify-center rounded-full" style="border:1.5px solid var(--line);transition:all .3s" aria-label="الصورة التالية"><svg class="ico" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
   </div>
 </section>
 
@@ -130,28 +131,32 @@
  <div class="px-5 py-10" style="background:var(--soft);border-radius:36px">
   <p class="lat text-[11px] mb-3" style="color:var(--tealtx)">03 / Commande</p>
   <h2 class="font-extrabold text-2xl mb-7">عمر معلوماتك</h2>
-  <form id="f" novalidate>
-    <div class="flex items-center gap-4 p-3 mb-6 bg-white" style="border-radius:22px">
-      <div class="media w-20 h-20 flex-none" style="border-radius:16px" id="sumImg"></div>
-      <div class="flex-1 min-w-0"><p class="font-bold leading-tight">PACE R1</p><p class="text-xs mt-1" style="opacity:.65" id="sumMeta">اختار المقاس</p></div>
-      <p class="num font-bold text-lg whitespace-nowrap"><span id="sumPrice"></span> DH</p>
-    </div>
+  <form id="f" novalidate class="form-grid">
+    <div>
     <label class="lbl" for="name">الاسم الكامل</label>
     <input class="field" id="name" autocomplete="name" placeholder="مثلا: يوسف">
     <p class="err" data-e="name"></p>
+    </div>
+    <div>
     <label class="lbl" for="phone">رقم الهاتف</label>
     <input class="field" id="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:right" placeholder="06XXXXXXXX">
     <p class="err" data-e="phone"></p>
+    </div>
+    <div>
     <label class="lbl" for="city">المدينة</label>
     <input class="field" id="city" autocomplete="address-level2" placeholder="مثلا: مراكش">
     <p class="err" data-e="city"></p>
+    </div>
+    <div>
     <label class="lbl" for="addr">العنوان</label>
     <input class="field" id="addr" autocomplete="street-address" placeholder="الحي، الزنقة، رقم الدار">
     <p class="err" data-e="addr"></p>
-    <span class="lbl" id="szl">المقاس</span>
-    <div id="chips" class="flex flex-wrap gap-2" role="radiogroup" aria-labelledby="szl"></div><input type="hidden" id="size">
-    <p class="text-xs mt-2" style="opacity:.65">ما عرفتيش مقاسك؟ نأكدوه معاك فالمكالمة.</p>
-    <p class="err" data-e="size" aria-live="polite"></p>
+    </div>
+    <div>
+    <label class="lbl" for="size">المقاس</label>
+    <select class="field" id="size"></select>
+    <p class="err" data-e="size"></p>
+    </div>
     <div class="flex items-center justify-between py-2">
       <span class="text-sm font-semibold ps-1">الكمية</span>
       <div class="flex items-center bg-white rounded-full" dir="ltr" style="border:1.5px solid rgba(21,22,26,.22)">
@@ -165,7 +170,6 @@
       <span class="num font-bold leading-none" style="font-size:40px"><span id="total">599</span><span class="text-base ms-1">DH</span></span>
     </div>
     <button class="btn" type="submit">تأكيد الطلب</button>
-    <a id="wa" class="btn btn-o mt-3 hidden" target="_blank" rel="noopener">تواصل بالواتساب</a>
     <p class="text-xs mt-4 text-center" style="opacity:.6">عرض تجريبي: المعلومات ما كتتصيفطش لأي متجر حقيقي.</p>
   </form>
   <div id="ok" class="hidden py-8 text-center" role="status" tabindex="-1">
