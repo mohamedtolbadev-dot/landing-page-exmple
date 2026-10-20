@@ -145,7 +145,7 @@ details[open] p{animation:up .3s both}
 .btn:disabled{opacity:.7;cursor:wait}
 .field.ok{border-color:var(--tealtx)}
 
-/* تحسينات للشاشات المتوسطة والكبيرة */
+/* تحسينات للشاشات الكبيرة */
 @media (min-width: 768px) {
   #hero {
     padding-bottom: 4rem;
@@ -169,6 +169,9 @@ details[open] p{animation:up .3s both}
   }
   section {
     padding: 4rem 5% !important;
+  }
+  .gallery-slides {
+    padding: 0 80px;
   }
   .form-grid {
     display: grid;
@@ -205,7 +208,42 @@ details[open] p{animation:up .3s both}
   }
 }
 
-/* تحسينات خاصة بالهواتف المحمولة (أقل من 768 بكسل) */
+/* تأثيرات إضافية للبطاقات والميزات */
+/* Feature cards enhancements */
+.feature-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: all 0.4s cubic-bezier(.2,.7,.2,1);
+  border: 1px solid transparent;
+}
+.feature-card:hover {
+  transform:translateY(-6px);
+  border-color: var(--teal);
+  box-shadow:0 12px 40px rgba(15,181,176,0.15);
+}
+.offer-section {
+  background: linear-gradient(135deg, #00F4CC 0%, #00d4b0 100%);
+  border: 2px solid #00F4CC;
+  border-radius: 24px;
+}
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -30px) rotate(5deg); }
+  66% { transform: translate(-20px, 20px) rotate(-5deg); }
+}
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+.offer-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,0.1) 0%,transparent 60%)}
+.offer-section > *{position:relative;z-index:1}
+.steps-container .num{transition:all 0.4s cubic-bezier(.2,.7,.2,1)}
+.steps-container.in .num{transform:scale(1.1)}
+.media:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,0.15)}
+@media (hover:hover){.btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 35px rgba(15,181,176,0.4)}}
+
+/* تحسينات خاصة بالهواتف المحمولة */
 @media (max-width: 767px) {
   body {
     font-size: 14px;
@@ -236,43 +274,31 @@ details[open] p{animation:up .3s both}
     padding: 2rem 15px !important;
   }
   
-  /* تحسين معرض الصور على الهواتف */
-  .slides {
-    padding: 0 10px !important;
-    gap: 12px !important;
+  /* تحسين الـ sticky button وجميع الأزرار على الهواتف */
+  #sticky {
+    padding: 10px 15px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
   }
   
-  .slides > div {
-    min-width: 140px !important;
-    flex: 1 1 calc(50% - 6px) !important;
+  .btn,
+  #sticky .btn,
+  #f .btn,
+  #order .btn {
+    min-height: 52px !important;
+    font-size: 15px !important;
+    width: 100% !important;
+    white-space: nowrap;
   }
   
-  /* تحسين النموذج */
+  /* تحسين النموذج على الهواتف */
   .form-grid {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
   
-  /* تحسين عرض الأزرار في النموذج */
-  #f .flex.items-center {
-    flex-direction: column;
-    gap: 16px;
-    align-items: stretch;
-  }
-  
-  #f .flex.items-center > div {
-    justify-content: center;
-  }
-  
-  /* تحسين عرض المجموع */
-  #f .flex.items-end {
-    flex-direction: column;
-    align-items: stretch !important;
-    text-align: center;
-  }
-  
-  #total {
-    font-size: 32px !important;
+  /* تحسين عرض خطوط الميزات على الهواتف */
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
   
   /* إخفاء التأثيرات التي لا تعمل بشكل جيد على اللمس */
@@ -282,27 +308,6 @@ details[open] p{animation:up .3s both}
     .btn:hover {
       transform: none !important;
     }
-  }
-  
-  /* تحسين الـ sticky button على الهواتف */
-  #sticky {
-    padding: 10px 15px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
-  }
-  
-  /* تحسين عرض خطوط الميزات على الهواتف */
-  .features-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  
-  /* تحسين عرض الخطوات */
-  .steps-container li {
-    gap: 12px !important;
-  }
-  
-  /* منع تجاوز الحدود الأفقية */
-  .ticker .track {
-    animation: tick 15s linear infinite;
   }
 }
 
@@ -317,44 +322,7 @@ details[open] p{animation:up .3s both}
     max-width: 320px !important;
   }
   
-  .media {
-    border-radius: 20px !important;
-  }
-  
   #order .px-5 {
     padding: 30px 15px !important;
   }
 }
-
-/* تأثيرات إضافية للبطاقات والميزات */
-/* Feature cards enhancements */
-.feature-card {
-  background: #fff;
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-  transition: all 0.4s cubic-bezier(.2,.7,.2,1);
-  border: 1px solid transparent;
-}
-.feature-card:hover {
-  transform:translateY(-6px);
-  border-color: var(--teal);
-  box-shadow:0 12px 40px rgba(15,181,176,0.15);
-}
-.offer-section {
-  background: linear-gradient(135deg, var(--teal) 0%, #00d4b0 100%);
-}
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(30px, -30px) rotate(5deg); }
-  66% { transform: translate(-20px, 20px) rotate(-5deg); }
-}
-.floating {
-  animation: float 6s ease-in-out infinite;
-}
-.offer-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,0.1) 0%,transparent 60%)}
-.offer-section > *{position:relative;z-index:1}
-.steps-container .num{transition:all 0.4s cubic-bezier(.2,.7,.2,1)}
-.steps-container.in .num{transform:scale(1.1)}
-.media:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,0.15)}
-@media (hover:hover){.btn:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 12px 35px rgba(15,181,176,0.4)}}
