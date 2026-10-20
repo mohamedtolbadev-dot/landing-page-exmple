@@ -4,12 +4,12 @@ const CONFIG={
   sizes:[40,41,42,43,44,45],
   maxQty:5,
   images:{
-    hero:{src:"assets/images/nike-pegasus-41-m-chaussures-homme-717204-1-sz.jpg"},
-    detail1:{src:"assets/images/aaaa_59c76089-d41a-4bd1-a248-3bcc416f2a86.jpg",x:50,y:50,s:1.0},
+    hero:{src:"assets/images/nike-pegasus-41-m-chaussures-homme-717204-1-sz.png"},
+    detail1:{src:"assets/images/aaaa_59c76089-d41a-4bd1-a248-3bcc416f2a86.png",x:50,y:50,s:1.0},
     gallery:[
-      {src:"assets/images/nike-pegasus-41-m-chaussures-homme-717204-1-sz.jpg",x:50,y:50,s:1.0},
-      {src:"assets/images/images.jpeg",x:50,y:50,s:1.0},
-      {src:"assets/images/aaaa_59c76089-d41a-4bd1-a248-3bcc416f2a86.jpg",x:50,y:50,s:1.0}
+      {src:"assets/images/nike-pegasus-41-m-chaussures-homme-717204-1-sz.png",x:50,y:50,s:1.0},
+      {src:"assets/images/images.png",x:50,y:50,s:1.0},
+      {src:"assets/images/aaaa_59c76089-d41a-4bd1-a248-3bcc416f2a86.png",x:50,y:50,s:1.0}
     ]
   },
   faq:[
@@ -43,16 +43,11 @@ fill($('[data-img=hero]'),CONFIG.images.hero,"حذاء رياضي رجالي");
 fill($('[data-img=detail1]'),CONFIG.images.detail1,"تفصيل الحذاء");
 $$('[data-price]').forEach(e=>e.textContent=CONFIG.price);
 $$('[data-sizes]').forEach(e=>e.textContent=CONFIG.sizes[0]+'–'+CONFIG.sizes.at(-1));
-// gallery
+// gallery - عرض الصور الثلاث جنباً إلى جنب
 const sl=$('#slides'),n=CONFIG.images.gallery.length;
-CONFIG.images.gallery.forEach((o,i)=>{const d=document.createElement('div');d.className='media';d.style.aspectRatio='1/1';sl.appendChild(d);fill(d,o,"صورة "+(i+1))});
-$('#gn').textContent=String(n).padStart(2,'0');$('#bar').style.width=(100/n)+'%';
-const step=()=>sl.firstElementChild.getBoundingClientRect().width+12;
-const idx=()=>Math.round(Math.abs(sl.scrollLeft)/step());
-const go=i=>sl.scrollTo({left:Math.max(0,Math.min(n-1,i))*step(),behavior:'smooth'});
-sl.addEventListener('scroll',()=>{const i=Math.min(n-1,idx());$('#gi').textContent=String(i+1).padStart(2,'0');$('#bar').style.left=(i*100/n)+'%'},{passive:true});
-$('#prev').onclick=()=>go(idx()-1);$('#next').onclick=()=>go(idx()+1);
-sl.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(idx()+1);if(e.key==='ArrowLeft')go(idx()-1)});
+CONFIG.images.gallery.forEach((o,i)=>{const d=document.createElement('div');d.className='media';d.style.aspectRatio='1/1';d.style.flex='1 1 calc(33.33% - 10px)';sl.appendChild(d);fill(d,o,"صورة "+(i+1))});
+$('#gi').style.display='none';$('#gn').style.display='none';$('#prev').style.display='none';$('#next').style.display='none';$('#bar').style.display='none';
+sl.style.overflowX='visible';sl.style.flexWrap='wrap';sl.style.gap='15px';
 // faq
 $('#faq').innerHTML=CONFIG.faq.map(([q,a])=>`<details class="faq"><summary class="flex items-center justify-between gap-4 min-h-[58px] cursor-pointer font-bold">${q}<svg class="ico plus"><use href="#i-plus"/></svg></summary><p class="pb-4 text-sm" style="opacity:.75">${a}</p></details>`).join('');
 // form

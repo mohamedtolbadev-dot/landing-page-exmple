@@ -1,6 +1,11 @@
-:root{--ink:#121212;--teal:#00ffd5;--tealtx:#067F83;--accent:#ff6b35;--soft:#F8F9FA;--line:rgba(21,22,26,.14);--glass:rgba(255,255,255,0.05);--glass-dark:rgba(0,0,0,0.1)}
+:root{--ink:#121212;--teal:#00ffd5;--tealtx:#067F83;--accent:#ff6b35;--soft:#F8F9FA;--line:rgba(21,22,26,.14);--glass:rgba(255,255,255,0.05);--glass-dark:rgba(0,0,0,0.1);--gradient-1:linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);--gradient-2:linear-gradient(135deg, var(--teal) 0%, #00d4b0 100%)}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:#fff;color:var(--ink);font-family:"Droid Arabic Kufi","Noto Kufi Arabic","Josefin Sans",sans-serif;font-size:15px;line-height:1.85;overflow-x:hidden}
+/* تحسين ظهور النصوص */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .lat{font-family:"Josefin Sans","Noto Kufi Arabic",sans-serif;letter-spacing:.2em;text-transform:uppercase}
 .num{font-family:"Josefin Sans",sans-serif}
 .dark{background:var(--ink);color:#fff}
