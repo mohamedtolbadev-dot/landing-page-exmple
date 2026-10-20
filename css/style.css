@@ -73,56 +73,6 @@ body{margin:0;background:#fff;color:var(--ink);font-family:"Droid Arabic Kufi","
 @media (max-width:768px){.slides>div{flex:1 1 calc(50% - 10px);min-width:150px}}
 @media (max-width:480px){.slides>div{flex:1 1 100%;max-width:350px}}
 
-/* Center content on desktop like a phone display - only apply to screens larger than 480px */
-@media (min-width: 481px) {
-  body {
-    background: #1a1a1a;
-    display: flex;
-    justify-content: center;
-    margin: 0;
-    min-height: 100vh;
-  }
-  main {
-    width: 430px;
-    min-height: 100vh;
-    background: #fff;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    position: relative;
-    overflow-x: hidden;
-  }
-  #sticky {
-    width: 430px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 20px;
-  }
-}
-
-/* Reset for mobile screens (480px and smaller) - use original responsive design */
-@media (max-width: 480px) {
-  body {
-    background: #fff;
-    display: block;
-    margin: 0;
-    min-height: 100vh;
-  }
-  main {
-    width: 100%;
-    min-height: 100vh;
-    background: #fff;
-    box-shadow: none;
-    position: relative;
-    overflow-x: hidden;
-  }
-  #sticky {
-    width: calc(100% - 40px);
-    left: auto;
-    transform: none;
-    bottom: 20px;
-    margin: 0 20px;
-  }
-}
-
 /* Form field enhancements */
 .field{width:100%;height:54px;background:#fff;border:1.5px solid rgba(21,22,26,.22);color:var(--ink);font:inherit;font-size:16px;padding:0 18px;border-radius:16px;appearance:none;transition:all 0.3s cubic-bezier(.2,.7,.2,1);box-shadow:0 2px 8px rgba(0,0,0,0.04)}
 .field::placeholder{color:rgba(21,22,26,.4)}
@@ -195,27 +145,7 @@ details[open] p{animation:up .3s both}
 .btn:disabled{opacity:.7;cursor:wait}
 .field.ok{border-color:var(--tealtx)}
 
-/* عرض المحتوى في وسط الشاشة على الكمبيوتر وكأنه هاتف */
-body {
-  background: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  min-height: 100vh;
-}
-main {
-  width: 430px;
-  min-height: 100vh;
-  background: #fff;
-  box-shadow: 0 0 50px rgba(0,0,0,0.5);
-  position: relative;
-}
-#sticky {
-  width: 430px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-/* تحسينات للشاشات الكبيرة */
+/* تحسينات للشاشات المتوسطة والكبيرة */
 @media (min-width: 768px) {
   #hero {
     padding-bottom: 4rem;
@@ -239,9 +169,6 @@ main {
   }
   section {
     padding: 4rem 5% !important;
-  }
-  .gallery-slides {
-    padding: 0 80px;
   }
   .form-grid {
     display: grid;
@@ -275,6 +202,127 @@ main {
   .steps-container li:nth-child(3) { transition-delay: 0.5s; }
   #sticky {
     padding: 15px 20%;
+  }
+}
+
+/* تحسينات خاصة بالهواتف المحمولة (أقل من 768 بكسل) */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+    overflow-x: hidden;
+  }
+  
+  #hero h1 {
+    font-size: 36px !important;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  #hero p {
+    text-align: center;
+    font-size: 15px;
+    margin: 0 auto 1.5rem;
+    max-width: 90%;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  section {
+    padding: 2rem 15px !important;
+  }
+  
+  /* تحسين معرض الصور على الهواتف */
+  .slides {
+    padding: 0 10px !important;
+    gap: 12px !important;
+  }
+  
+  .slides > div {
+    min-width: 140px !important;
+    flex: 1 1 calc(50% - 6px) !important;
+  }
+  
+  /* تحسين النموذج */
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  /* تحسين عرض الأزرار في النموذج */
+  #f .flex.items-center {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  #f .flex.items-center > div {
+    justify-content: center;
+  }
+  
+  /* تحسين عرض المجموع */
+  #f .flex.items-end {
+    flex-direction: column;
+    align-items: stretch !important;
+    text-align: center;
+  }
+  
+  #total {
+    font-size: 32px !important;
+  }
+  
+  /* إخفاء التأثيرات التي لا تعمل بشكل جيد على اللمس */
+  @media (hover: none) {
+    .slides > div:hover,
+    .feature-card:hover,
+    .btn:hover {
+      transform: none !important;
+    }
+  }
+  
+  /* تحسين الـ sticky button على الهواتف */
+  #sticky {
+    padding: 10px 15px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  
+  /* تحسين عرض خطوط الميزات على الهواتف */
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  /* تحسين عرض الخطوات */
+  .steps-container li {
+    gap: 12px !important;
+  }
+  
+  /* منع تجاوز الحدود الأفقية */
+  .ticker .track {
+    animation: tick 15s linear infinite;
+  }
+}
+
+/* تحسينات إضافية للهواتف الصغيرة جداً */
+@media (max-width: 480px) {
+  #hero h1 {
+    font-size: 28px !important;
+  }
+  
+  .slides > div {
+    flex: 1 1 100% !important;
+    max-width: 320px !important;
+  }
+  
+  .media {
+    border-radius: 20px !important;
+  }
+  
+  #order .px-5 {
+    padding: 30px 15px !important;
   }
 }
 
