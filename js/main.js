@@ -178,9 +178,6 @@ $$('[data-sizes]').forEach(e=>e.textContent=CONFIG.sizes[0]+'–'+CONFIG.sizes.a
             d.style.position = 'relative';
             d.style.overflow = 'hidden';
         });
-        
-        $('#gi').style.display='none';$('#gn').style.display='none';$('#prev').style.display='none';$('#next').style.display='none';$('#bar').style.display='none';
-        sl.style.overflowX='visible';sl.style.flexWrap='wrap';sl.style.gap='15px';
 // faq
 $('#faq').innerHTML=CONFIG.faq.map(([q,a])=>`<details class="faq"><summary class="flex items-center justify-between gap-4 min-h-[58px] cursor-pointer font-bold">${q}<svg class="ico plus"><use href="#i-plus"/></svg></summary><p class="pb-4 text-sm" style="opacity:.75">${a}</p></details>`).join('');
 // form
