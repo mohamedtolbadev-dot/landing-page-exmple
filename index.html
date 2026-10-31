@@ -338,7 +338,7 @@ html{scroll-behavior:smooth}::selection{background:var(--g);color:#fff}
 .dsg{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:36px;padding-bottom:10px}
 .dst{display:block}
 .dsf{position:relative;aspect-ratio:3/4}
-.dsf.r1{border-radius:140px 28px 28px 28px}.dsf.r2{border-radius:28px 140px 28px 28px}.dsf.rr{border-radius:8px}
+.dsf.r1{border-radius:140px 28px 140px 28px}.dsf.r2{border-radius:28px 140px 28px 140px}.dsf.r1 .dsn{padding-right:72px}.dsf.r2 .dsn{padding-left:72px}[dir=rtl] .dsf.r1 .dsn{padding-right:20px;padding-left:72px}[dir=rtl] .dsf.r2 .dsn{padding-left:20px;padding-right:72px}.dsf.rr{border-radius:8px}
 .dsf::before{content:"";position:absolute;inset:12px -12px -12px 12px;border:2px solid var(--g);border-radius:inherit;z-index:0;transition:inset .3s}
 .dsf.rr::before{display:none}
 .dst:hover .dsf::before{inset:6px -6px -6px 6px}
@@ -347,7 +347,7 @@ html{scroll-behavior:smooth}::selection{background:var(--g);color:#fff}
 .dst h3{margin-top:26px;font-size:16px}.dst small{color:var(--mute);font-size:15px}
 [dir=rtl] .dsf::before{inset:12px 12px -12px -12px}[dir=rtl] .dst:hover .dsf::before{inset:6px 6px -6px -6px}
 @media(max-width:900px){.dsg{grid-template-columns:repeat(2,1fr);gap:26px 20px}
-.dsf.r1{border-radius:80px 20px 20px 20px}.dsf.r2{border-radius:20px 80px 20px 20px}.dsf::before{inset:8px -8px -8px 8px}[dir=rtl] .dsf::before{inset:8px 8px -8px -8px}}
+.dsf.r1{border-radius:80px 20px 80px 20px}.dsf.r2{border-radius:20px 80px 20px 80px}.dsf.r1 .dsn{padding-right:44px}.dsf.r2 .dsn{padding-left:44px}[dir=rtl] .dsf.r1 .dsn{padding-right:14px;padding-left:44px}[dir=rtl] .dsf.r2 .dsn{padding-left:14px;padding-right:44px}.dsf::before{inset:8px -8px -8px 8px}[dir=rtl] .dsf::before{inset:8px 8px -8px -8px}}
 @media(min-width:901px){
 .hs{height:clamp(680px,92vh,820px)}
 .hc{align-items:flex-end;padding-bottom:160px}
@@ -395,6 +395,20 @@ header.sc nav{display:none}
 .cb .ic{width:20px;height:20px}
 .cb i{position:absolute;top:-4px;right:-4px;font-size:11px;min-width:18px;height:18px}[dir=rtl] .cb i{right:auto;left:-4px}
 }
+/* Full HD (1920px) */
+@media(min-width:1600px){
+body{font-size:17px}
+.wrap{max-width:1760px;padding-left:56px;padding-right:56px}
+.hero .wrap{gap:64px;padding-top:72px;padding-bottom:84px}
+.hero h1{font-size:clamp(170px,9vw,200px)}
+.hero p{font-size:20px;max-width:46ch}
+h2{font-size:clamp(60px,3.6vw,72px)}
+.dsg{gap:44px}
+.dsn h3{font-size:19px}.dsn small{font-size:16px}
+.grid{gap:28px}
+.hct{max-width:1400px}
+}
+@media(min-width:2200px){.wrap{max-width:2000px}}
 </style><script>document.documentElement.classList.add('js')</script></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l4 3.5V16h-8zM6.5 19.5a2 2 0 100-4 2 2 0 000 4zM17.5 19.5a2 2 0 100-4 2 2 0 000 4z"/></symbol>
