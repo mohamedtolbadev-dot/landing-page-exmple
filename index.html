@@ -409,6 +409,10 @@ h2{font-size:clamp(60px,3.6vw,72px)}
 .hct{max-width:1400px}
 }
 @media(min-width:2200px){.wrap{max-width:2000px}}
+/* Mobile: center language letters in the circle */
+@media(max-width:900px){#lg{display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:0;line-height:1;text-align:center}#lg::after{display:block;line-height:1;margin:0;padding:0;font-size:14px;font-weight:700;letter-spacing:0;text-indent:0}}
+/* Mobile: no product card in hero */
+@media(max-width:640px){.hcd{display:none!important}.hbi{flex-direction:column;align-items:center}.hc{padding-bottom:96px}}
 </style><script>document.documentElement.classList.add('js')</script></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 9h4l4 3.5V16h-8zM6.5 19.5a2 2 0 100-4 2 2 0 000 4zM17.5 19.5a2 2 0 100-4 2 2 0 000 4z"/></symbol>
@@ -612,7 +616,7 @@ document.addEventListener('submit',e=>{if(e.target.id!=='fm')return;e.preventDef
 function rdone(){$('dv').innerHTML=`${stp(3)}<div class="dn"><div class="ck">${IC('check')}</div><h2>Merci ${esc(last.nm.split(' ')[0])}</h2><p>Votre commande <b>${last.ref}</b> est enregistrée. Si WhatsApp ne s’est pas ouvert, envoyez-la avec le bouton ci-dessous. Nous vous appelons pour confirmer la livraison.</p><div class="sum">${last.rows}<div class="sr tot"><span>Paiement</span><b>À la livraison</b></div></div><div class="row"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/${WA}?text=${encodeURIComponent(last.msg)}">${IC('chat')}Envoyer sur WhatsApp</a><a class="btn o" href="#shop">Continuer mes achats</a></div></div>`}
 $('gh').innerHTML=P.slice(0,10).map(hcard).join('');
 draw();route();
-let hi=0,ht,hx=0;const HS=P.slice(0,5);
+let hi=0,ht,hx=0;const HS=[22,13,19,18].map(id=>P.find(p=>p.id===id));
 $('hsl').innerHTML=HS.map((x,k)=>`<div class="sl${k?'':' on'}"><img src="${x.i}" alt="${x.n}" ${k?'loading="lazy"':''}></div>`).join('');
 $('hd').innerHTML=HS.map((x,k)=>`<button aria-label="Image ${k+1}" data-h="${k}"></button>`).join('');
 function hgo(n){hi=(n+HS.length)%HS.length;const x=HS[hi];
